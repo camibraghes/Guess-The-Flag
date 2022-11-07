@@ -6,8 +6,22 @@ struct ContentView: View {
     var correctAnswer = Int.random(in: 0...2)
     
     var body: some View {
-        VStack {
-            Text("Flag")
+        ZStack {
+            Color.blue.ignoresSafeArea()
+            VStack(spacing: 16) {
+                Text("Tap the flag of \(countries[correctAnswer])")
+                    .foregroundColor(.white)
+                
+                VStack {
+                    ForEach(0..<3) { flag in
+                        Button {}
+                    label: {
+                        Image(countries[flag])
+                            .opacity(0.9)
+                    }
+                    }
+                }
+            }
         }
     }
 }
