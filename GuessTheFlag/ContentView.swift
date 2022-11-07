@@ -38,6 +38,11 @@ struct ContentView: View {
         
         showingScore = true
     }
+    
+    func askQustion() {
+        countries.shuffled()
+        correctAnswer = Int.random(in: 0...3)
+    }
 }
 
 
