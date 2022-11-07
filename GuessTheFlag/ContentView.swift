@@ -5,8 +5,8 @@ struct ContentView: View {
     @State private var showingScore = false
     @State private var scoreTitle = ""
     
-    var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
- 
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
+    
     var body: some View {
         ZStack {
             Color.blue.ignoresSafeArea()
@@ -18,14 +18,17 @@ struct ContentView: View {
                     ForEach(0..<3) { flag in
                         Button {
                             flagTapped(flag)
+                        } label: {
+                            Image(countries[flag])
+                                .opacity(0.9)
                         }
-                    label: {
-                        Image(countries[flag])
-                            .opacity(0.9)
-                    }
                     }
                 }
             }
+        }.alert(scoreTitle, isPresented: $showingScore) {
+            Button("Continue", action: askQuestion)
+        } message: {
+            Text("Your score is ..")
         }
     }
     
@@ -39,9 +42,9 @@ struct ContentView: View {
         showingScore = true
     }
     
-    func askQustion() {
-        countries.shuffled()
-        correctAnswer = Int.random(in: 0...3)
+    func askQuestion() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
     }
 }
 
