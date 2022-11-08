@@ -14,6 +14,7 @@ struct ContentView: View {
                 .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3),
             ], center: .top, startRadius: 200, endRadius: 400)
             .ignoresSafeArea()
+            
             VStack(spacing: 0) {
                 Text("Tap the flag of")
                     .font(.subheadline.italic())
